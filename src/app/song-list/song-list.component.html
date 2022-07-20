@@ -1,0 +1,98 @@
+<div class="containerMusic">
+  <h1 class="personalMusicList">For more music</h1>
+  <button class="contactUs" routerLink="/contact">Contact us</button>
+</div>
+<ng-container *ngIf="songs.length; else noData">
+  <div>
+    <div *ngFor="let song of songs; let i = index" class="songElement">
+      <div class="songNumber">{{ i + 1 }}</div>
+      <div class="songCover">
+        <img src="{{ song.cover }}" />
+      </div>
+      <h3 class="songArtist">
+        {{ song.artist }}
+      </h3>
+      <p>
+        {{ song.title }}
+      </p>
+      <div>{{ song.album }}</div>
+      <div class="progressBarWrapper">
+        <div
+          *ngIf="
+            song.id === currentSongId;
+            then progressBarPlay;
+            else progressBarNoPlay
+          "
+        ></div>
+      </div>
+      <div class="timersWrapper">
+        <div *ngIf="song.id === currentSongId" class="currentTime">
+          {{ secondsToMinAndSeconds(getCurrentSongAudioTime()).min }} :
+          {{
+            secondsToMinAndSeconds(getCurrentSongAudioTime()).sec
+              | number: "2.0-0"
+          }}
+        </div>
+        <div *ngIf="song.id === currentSongId" class="elapsedTime">
+          - {{ secondsToMinAndSeconds(getCurrentSongElapsedTime(song)).min }} :
+          {{
+            secondsToMinAndSeconds(getCurrentSongElapsedTime(song)).sec
+              | number: "2.0-0"
+          }}
+        </div>
+      </div>
+      <div class="buttonsWrapper">
+        <div
+          *ngIf="
+            song.id !== currentSongId ||
+            (song.id === currentSongId && !isSongPlayed)
+          "
+          class="button"
+        >
+          <button (click)="playSong(song)" class="playPauseButton">
+            <img class="playIcon" src="../../assets/controls/play.png" />
+          </button>
+        </div>
+        <div *ngIf="song.id === currentSongId && isSongPlayed" class="button">
+          <button (click)="pauseSong(song)" class="playPauseButton">
+            <img class="pauseIcon" src="../../assets/controls/pause.png" />
+          </button>
+        </div>
+        <div class="button">
+          <button (click)="stopSong(song)" class="stopButton">
+            <img class="stopIcon" src="../../assets/controls/stop.png" />
+          </button>
+        </div>
+        <div class="goToDetailsButton">
+          <button
+            [routerLink]="'/songs/' + song.id"
+            (click)="setSongInStorage(song)"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noData>
+  <p>No songs.</p>
+</ng-template>
+
+<ng-template #progressBarPlay>
+  <div class="progressBarParent">
+    <div class="progressBarChildPlay" [style.width.%]="[currentTime]"></div>
+  </div>
+</ng-template>
+
+<ng-template #progressBarNoPlay>
+  <div class="progressBarParent">
+    <div class="progressBarChildNoPlay"></div>
+  </div>
+</ng-template>
+
+<div class="containerMusic">
+  <h1 class="personalMusicList">For more music</h1>
+  <button class="contactUs" routerLink="/contact">Contact us</button>
+</div>

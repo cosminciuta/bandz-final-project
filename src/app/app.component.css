@@ -1,0 +1,110 @@
+.header {
+  display: inline-block;
+  padding: 20px;
+  color: white;
+  font-size: 0.99925rem;
+  white-space: nowrap;
+  line-height: inherit;
+  font-weight: bold;
+  grid-area: header;
+  display: flex;
+  /* align-content: center; */
+  justify-content: space-between;
+  background: top right/210% 210% #161941;
+  background-image: linear-gradient(to bottom left, #3940a0, #161941, #3940a0);
+}
+
+.footer {
+  display: inline-block;
+  padding: 20px;
+  color: white;
+  font-size: 0.99925rem;
+  white-space: nowrap;
+  line-height: inherit;
+  grid-area: footer;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  background: top right/210% 210% #161941;
+  background-image: linear-gradient(to bottom left, #3940a0, #161941, #3940a0);
+}
+
+.body {
+  background: top right/210% 210% #fd5d93;
+  background: repeating-radial-gradient(circle at 0 0, #161941, #3940a0 50px);
+}
+
+.main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header" "body" "footer";
+}
+
+.link {
+  display: flex;
+  width: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: whitesmoke;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.link:hover {
+  cursor: pointer;
+  color: #f895b6;
+}
+
+.active {
+  color: #fd5d93;
+}
+
+.home {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+
+/* .userIsLogged {
+  width: 30px;
+  display: flex; */
+/* align-items: center; */
+/* padding-right: 20px; */
+/* padding-left: 10px;
+} */
+
+/* .userIsLogged img {
+  justify-content: space-between;
+  padding-right: 2px;
+} */
+
+.loggedInAndOut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.logged {
+  display: flex;
+  width: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: whitesmoke;
+  text-decoration: none;
+  /* margin-left: 10px; */
+  margin-right: 60px;
+}
+
+.logged:hover {
+  cursor: pointer;
+  color: #f895b6;
+}
